@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "fastify-jwt": "^4.1.3"
+  }
+}

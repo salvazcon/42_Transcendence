@@ -1,5 +1,4 @@
 services:
-
   # NOTE: Nginx container
   proxy:
     container_name: proxy
@@ -81,6 +80,22 @@ services:
       - GOOGLE_GMAIL_PASSWORD=${GOOGLE_GMAIL_PASSWORD}
     volumes:
       - ./backend-auth:/app
+      - /app/node_modules
+    restart: always
+    networks:
+      - transcendence
+    
+  # NOTE: Customization API container
+  backend-customization:
+    container_name: backend-customization
+    build:
+      context: backend-customization/
+      dockerfile: Dockerfile
+    environment:
+      - TOKEN_SECRET_KEY=${TOKEN_SECRET_KEY}
+      - FRONTEND_BASEURL_EXTERNAL=${FRONTEND_BASEURL_EXTERNAL}
+    volumes:
+      - ./backend-customization:/app
       - /app/node_modules
     restart: always
     networks:

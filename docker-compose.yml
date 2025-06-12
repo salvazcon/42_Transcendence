@@ -97,6 +97,8 @@ services:
     volumes:
       - ./backend-customization:/app
       - /app/node_modules
+    ports:
+      - "3001:3001"
     restart: always
     networks:
       - transcendence
